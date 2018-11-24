@@ -43,7 +43,7 @@ describe('The javascript parser', () => {
             JSON.stringify(parseCode('for (var i=0; i<5; i++){\n' +
                 'M[i]= -1;\n' +
                 '}')),
-            '[{"line":1,"type":"VariableDeclaration","name":"i","condition":"","value":0},{"line":1,"type":"UpdateExpression","name":"","condition":"","value":"i++"},{"line":1,"type":"ForStatement","name":"","condition":"i<5","value":""},{"line":2,"type":"AssignmentExpression","name":"M[i]","condition":"","value":" - 1"}]'
+            '[{"line":1,"type":"VariableDeclaration","name":"i","condition":"","value":0},{"line":1,"type":"UpdateExpression","name":"","condition":"","value":"i++"},{"line":1,"type":"ForStatement","name":"","condition":"i < 5","value":""},{"line":2,"type":"AssignmentExpression","name":"M[i]","condition":"","value":"-1"}]'
         );
     });
 
@@ -51,7 +51,7 @@ describe('The javascript parser', () => {
         assert.equal(
             JSON.stringify(parseCode('if (x==1) x=0;\n' +
                 'if (x==2) x=1;')),
-            '[{"line":1,"type":"AssignmentExpression","name":"x","condition":"","value":0},{"line":1,"type":"IfStatement","name":"","condition":"x==1","value":""},{"line":2,"type":"AssignmentExpression","name":"x","condition":"","value":1},{"line":2,"type":"IfStatement","name":"","condition":"x==2","value":""}]'
+            '[{"line":1,"type":"AssignmentExpression","name":"x","condition":"","value":0},{"line":1,"type":"IfStatement","name":"","condition":"x == 1","value":""},{"line":2,"type":"AssignmentExpression","name":"x","condition":"","value":1},{"line":2,"type":"IfStatement","name":"","condition":"x == 2","value":""}]'
         );
     });
 
@@ -61,7 +61,7 @@ describe('The javascript parser', () => {
                 'x=2;\n' +
                 'else if (x>3) \n' +
                 'x=3;')),
-            '[{"line":1,"type":"IfStatement","name":"","condition":"x < 2","value":""},{"line":2,"type":"AssignmentExpression","name":"x","condition":"","value":2},{"line":3,"type":"ElseIfStatement","name":"","condition":"x>3","value":""},{"line":4,"type":"AssignmentExpression","name":"x","condition":"","value":3}]'
+            '[{"line":1,"type":"IfStatement","name":"","condition":"x < 2","value":""},{"line":2,"type":"AssignmentExpression","name":"x","condition":"","value":2},{"line":3,"type":"ElseIfStatement","name":"","condition":"x > 3","value":""},{"line":4,"type":"AssignmentExpression","name":"x","condition":"","value":3}]'
         );
     });
 
@@ -70,7 +70,7 @@ describe('The javascript parser', () => {
             JSON.stringify(parseCode('if (x==1) x=0;\n' +
                 'else if (x==2) x=1;\n' +
                 'else if (x==3) x=2;')),
-            '[{"line":1,"type":"AssignmentExpression","name":"x","condition":"","value":0},{"line":1,"type":"IfStatement","name":"","condition":"x==1","value":""},{"line":2,"type":"AssignmentExpression","name":"x","condition":"","value":1},{"line":2,"type":"ElseIfStatement","name":"","condition":"x==2","value":""},{"line":3,"type":"AssignmentExpression","name":"x","condition":"","value":2},{"line":3,"type":"ElseIfStatement","name":"","condition":"x==3","value":""}]'
+            '[{"line":1,"type":"AssignmentExpression","name":"x","condition":"","value":0},{"line":1,"type":"IfStatement","name":"","condition":"x == 1","value":""},{"line":2,"type":"AssignmentExpression","name":"x","condition":"","value":1},{"line":2,"type":"ElseIfStatement","name":"","condition":"x == 2","value":""},{"line":3,"type":"AssignmentExpression","name":"x","condition":"","value":2},{"line":3,"type":"ElseIfStatement","name":"","condition":"x == 3","value":""}]'
         );
     });
 
@@ -86,7 +86,7 @@ describe('The javascript parser', () => {
     it('is parsing a binary exp correctly', () => {
         assert.equal(
             JSON.stringify(parseCode('let x= y+2;')),
-            '[{"line":1,"type":"VariableDeclaration","name":"x","condition":"","value":"y+2"}]'
+            '[{"line":1,"type":"VariableDeclaration","name":"x","condition":"","value":"y + 2"}]'
         );
     });
 
@@ -94,7 +94,7 @@ describe('The javascript parser', () => {
         assert.equal(
             JSON.stringify(parseCode('if (x+1 > c-2)\n' +
                 'x=3;')),
-            '[{"line":1,"type":"IfStatement","name":"","condition":"x+1>c-2","value":""},{"line":2,"type":"AssignmentExpression","name":"x","condition":"","value":3}]'
+            '[{"line":1,"type":"IfStatement","name":"","condition":"x + 1 > c - 2","value":""},{"line":2,"type":"AssignmentExpression","name":"x","condition":"","value":3}]'
         );
     });
 
@@ -130,7 +130,7 @@ describe('The javascript parser', () => {
                 'x=0;\n' +
                 'else \n' +
                 'x=-1;')),
-            '[{"line":1,"type":"IfStatement","name":"","condition":"x==1","value":""},{"line":2,"type":"AssignmentExpression","name":"x","condition":"","value":2},{"line":3,"type":"ElseIfStatement","name":"","condition":"x>1","value":""},{"line":4,"type":"AssignmentExpression","name":"x","condition":"","value":3},{"line":5,"type":"ElseIfStatement","name":"","condition":"x<0","value":""},{"line":6,"type":"AssignmentExpression","name":"x","condition":"","value":0},{"line":8,"type":"AssignmentExpression","name":"x","condition":"","value":"-1"}]'
+            '[{"line":1,"type":"IfStatement","name":"","condition":"x == 1","value":""},{"line":2,"type":"AssignmentExpression","name":"x","condition":"","value":2},{"line":3,"type":"ElseIfStatement","name":"","condition":"x > 1","value":""},{"line":4,"type":"AssignmentExpression","name":"x","condition":"","value":3},{"line":5,"type":"ElseIfStatement","name":"","condition":"x < 0","value":""},{"line":6,"type":"AssignmentExpression","name":"x","condition":"","value":0},{"line":8,"type":"AssignmentExpression","name":"x","condition":"","value":"-1"}]'
         );
     });
 
