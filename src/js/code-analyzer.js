@@ -115,7 +115,7 @@ function binary_exp(node){
         right= exp_types[node.right.type](node.right);
     else
         right+=binary_exp(node.right);
-    return left + node.operator + right;
+    return left +' ' +node.operator +' ' +right;
 }
 
 function unary_exp(node){
