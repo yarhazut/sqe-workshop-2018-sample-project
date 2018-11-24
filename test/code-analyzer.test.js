@@ -31,7 +31,7 @@ describe('The javascript parser', () => {
             JSON.stringify(parseCode('while (i>0){\n' +
                 'i= i+2;\n' +
                 '}')),
-            '[{"line":1,"type":"WhileStatement","name":"","condition":"i>0","value":""},{"line":2,"type":"AssignmentExpression","name":"i","condition":"","value":"i+2"}]');
+            '[{"line":1,"type":"WhileStatement","name":"","condition":"i > 0","value":""},{"line":2,"type":"AssignmentExpression","name":"i","condition":"","value":"i + 2"}]');
     });
 
     ///from this part- write expected!!!
@@ -43,7 +43,7 @@ describe('The javascript parser', () => {
             JSON.stringify(parseCode('for (var i=0; i<5; i++){\n' +
                 'M[i]= -1;\n' +
                 '}')),
-            '[{"line":1,"type":"VariableDeclaration","name":"i","condition":"","value":0},{"line":1,"type":"UpdateExpression","name":"","condition":"","value":"i++"},{"line":1,"type":"ForStatement","name":"","condition":"i<5","value":""},{"line":2,"type":"AssignmentExpression","name":"M[i]","condition":"","value":"-1"}]'
+            '[{"line":1,"type":"VariableDeclaration","name":"i","condition":"","value":0},{"line":1,"type":"UpdateExpression","name":"","condition":"","value":"i++"},{"line":1,"type":"ForStatement","name":"","condition":"i<5","value":""},{"line":2,"type":"AssignmentExpression","name":"M[i]","condition":"","value":" - 1"}]'
         );
     });
 
@@ -61,7 +61,7 @@ describe('The javascript parser', () => {
                 'x=2;\n' +
                 'else if (x>3) \n' +
                 'x=3;')),
-            '[{"line":1,"type":"IfStatement","name":"","condition":"x<2","value":""},{"line":2,"type":"AssignmentExpression","name":"x","condition":"","value":2},{"line":3,"type":"ElseIfStatement","name":"","condition":"x>3","value":""},{"line":4,"type":"AssignmentExpression","name":"x","condition":"","value":3}]'
+            '[{"line":1,"type":"IfStatement","name":"","condition":"x < 2","value":""},{"line":2,"type":"AssignmentExpression","name":"x","condition":"","value":2},{"line":3,"type":"ElseIfStatement","name":"","condition":"x>3","value":""},{"line":4,"type":"AssignmentExpression","name":"x","condition":"","value":3}]'
         );
     });
 
