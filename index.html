@@ -18,6 +18,12 @@
                 width: 80%;
                 height: 95%;
             }
+            .red {
+                background-color: red;
+            }
+            .green{
+                background-color: lawngreen;
+            }
         </style>
     </head>
     <body>
@@ -36,9 +42,16 @@
             </tr>
             <tr>
                 <td>
-                    <div class="textAreaWrapper">
-                        <textarea id="codePlaceholder" title="Enter code here"></textarea>
-                    </div>
+                        insert parameters:
+                        <br/>
+                        <input type="text" id="inputText">
+                        <br/>
+                        <div class="textAreaWrapper">
+                            <br/>
+                            <textarea id="codePlaceholder" title="Enter code here"></textarea>
+                        </div>
+                        <br/>
+
                 </td>
                 <td>
                     <div class="textAreaWrapper">
@@ -64,6 +77,12 @@
                 <td>
                     <div>
                         <button id="codeSubmissionButton">Parse code</button>
+                        <br/>
+                        <br/>
+                        substituted code:
+                        <br/>
+                        <br/>
+                        <table id="subTable"></table>
                     </div>
                 </td>
                 <td>
